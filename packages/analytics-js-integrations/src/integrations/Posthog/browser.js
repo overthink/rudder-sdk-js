@@ -61,8 +61,9 @@ class Posthog {
     if (this.enableLocalStoragePersistence) {
       configObject.persistence = 'localStorage+cookie';
     }
-
-    posthog.init(this.teamApiKey, configObject);
+    const f = window?.__RS_PH_INIT_HOOK__;
+    const updatedConfigObject = f ? f(configObject) : configObject;
+    posthog.init(this.teamApiKey, updatedConfigObject);
   }
 
   isLoaded() {
