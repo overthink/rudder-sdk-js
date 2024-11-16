@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+tar zcvf rudderstack-analytics-js-$(git rev-parse --short HEAD).tar.gz package.json dist/*
